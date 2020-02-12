@@ -1,0 +1,1 @@
+web: gunicorn fourAfour.wsgi --log-file -
