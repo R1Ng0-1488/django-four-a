@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+{% load bootstrap4 %}
+{% load static %}
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>{% block title %}Главная{% endblock %} - 4А </title>
+		{% bootstrap_css %}
+	<link rel="stylesheet" type="text/css" 
+		href="{% static 'main/style.css' %}">
+		{% bootstrap_javascript jquery='full' %}
+
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark border-head" style="background-color: black;">
+		<nav class="container">
+			<a href="{% url 'main:index' %}" class="navbar">
+				<img width="60" height="60" alt="logo" src="{% static 'main/4a.png' %}">
+			</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expended="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item lol m-2">
+						<a href="{% url 'main:news' %}" class="nav-link">Новости</a>
+					</li>
+					<li class="nav-item active lolactive m-2">
+						<a href="{% url 'main:index' %}" class="nav-link">Главная</a>
+					</li>
+					<li class="nav-item lol m-2">
+						<a href="{% url 'main:videos' %}" class="nav-link">Видео</a>
+					</li>
+					<li class="nav-item lol m-2">
+						<a href="{% url 'main:musics' %}" class="nav-link">Музыка</a>
+					</li>
+					<li class="nav-item lol m-2">
+						<a href="{% url 'main:lol' %}" class="nav-link">Биография</a>
+					</li>
+					<li class="nav-item lol m-2">
+						<a href="{% url 'main:other' page='contacts' %}" class="nav-link">Контакты</a>
+					</li>
+					<li class="nav-item lol m-2">
+						<a href="{% url 'main:images' %}" class="nav-link">Фото</a>
+					</li>
+					<li class="nav-item lol m-2">
+						<a href="{% url 'main:texts' %}" class="nav-link">Текста</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	</nav>
+
+	<section>		
+		{% block content %}
+		{% endblock %}	
+	</section>
+	<footer class="border-footer">
+		<div class="container">
+			<p class="text-white font-italic">
+				Made by <a class="text-danger" href="{% url 'main:other' page='r1ng0' %}">R1Ng0</a>
+			</p>
+		</div>
+		
+	</footer>
+	<script href="{% bootstrap_css %}" rel="stylesheet"></script>
+	<script src="{% bootstrap_jquery_slim_url %}" ></script>
+	<script src="{% bootstrap_popper_url  %}" ></script>
+	<script src="{% bootstrap_javascript_url %}"></script>
+</body>
+</html>

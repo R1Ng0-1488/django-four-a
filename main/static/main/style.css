@@ -1,0 +1,41 @@
+body {
+	background-color: black;
+}
+
+.div {
+	background-color: #262626;
+	border-radius: 15px;
+}
+
+.border-head {
+	border-width: 0px 0px 1px;
+	border-color: gray;
+	border-style: solid;
+}
+
+.border-footer {
+	border-width: 1px 0px 0px;
+	border-color: gray;
+	border-style: solid;
+}
+
+.border-danger {
+	border-width: 0px 0px 5px;
+	border-color: red;
+	border-style: solid;
+}
+
+.lolactive{
+	border-width: 0px 0px 3px;
+	border-color: red;
+	border-style: solid;
+}
+
+
+.lol:hover{
+	transform:rotate(360deg);
+	border-width: 0px 0px 3px;
+	border-color: red;
+	border-style: solid;
+}
+

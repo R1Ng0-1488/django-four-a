@@ -1,0 +1,17 @@
+{% extends "layout/basic.html" %}
+
+{% block title %}Текста{% endblock %}
+
+{% block content %}
+<div class="container">
+	<div class="row">
+		{% for text in texts %}
+		<div class="col div m-4">
+			<h1 class="text-white">{{ text.title }}</h1>
+			<p class="text-white">{{ text.text }}</p>
+			<p class="text-white">{{ text.published }}</p>
+		</div>
+		{% endfor %}
+	</div>
+</div>
+{% endblock %}

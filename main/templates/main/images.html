@@ -1,0 +1,15 @@
+{% extends "layout/basic.html" %}
+
+{% block title %}Фотки{% endblock %}
+
+{% block content %}
+<div class="container">
+	<div class="row">
+		{% for image in images %}
+		<div class="col-sm-12 col-lg-5">
+			<img width="100%"  class="rounded m-5" src="{{ image.image.url }}">
+		</div>
+		{% endfor %}
+	</div>
+</div>
+{% endblock %}
