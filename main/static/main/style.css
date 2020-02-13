@@ -39,3 +39,5 @@ body {
 	border-style: solid;
 }
 
+.hovers:hover{
+	transform:rotate(10deg);
