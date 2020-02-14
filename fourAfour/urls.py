@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.contrib.staticfiles.views import serve
+from django.contrib.auth.views import LogoutView
 from django.views.decorators.cache import never_cache
 from django.conf.urls.static import static
 
@@ -24,6 +25,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('social_django.urls')),
     path('', include('main.urls', namespace='')),
+    path('accounts/logout/', LogoutView.as_view(), name='logout'),
 ]
 
 if settings.DEBUG:

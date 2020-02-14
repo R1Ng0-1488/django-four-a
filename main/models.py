@@ -12,8 +12,8 @@ class News(models.Model):
 	# image = models.ImageField(blank=True, upload_to='media',
 	# 						  verbose_name='Изображение')
 	image = models.URLField(blank=True, null=True, verbose_name='Изображение')
-	author = models.ForeignKey(User, on_delete=models.PROTECT,
-							   verbose_name='Автор')
+	source = models.URLField(blank=True, null=True, verbose_name='Источник')
+	author = models.CharField(max_length=200, verbose_name='Автор')
 	published = models.DateTimeField(auto_now_add=True,
 									 verbose_name='Опубликовано')	
 

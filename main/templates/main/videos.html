@@ -10,7 +10,7 @@
 			<h1 class="text-white border-danger">{{ rubric.name }}</h1>
 			<div class="row">			
 				{% for video in rubric.videos_set.all %}
-				<div class="col m-4 div">
+				<div class="col m-3 div">
 					<iframe width="300" height="200" class="rounded m-4"  src="{{ video.video }}" frameborder="0" allowfullscreen></iframe>
 					<p class="text-secondary mx-4">{{ video.title }}</p>	
 				</div>

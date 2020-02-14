@@ -1,11 +1,16 @@
 from django.shortcuts import render
 from django.http import HttpResponse, Http404
 from django.views.generic import View
+from django.views.generic.base import TemplateView
+from django.views.generic.edit import CreateView
 from django.template import TemplateDoesNotExist
 from django.template.loader import get_template
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.urls import reverse_lazy
 
 from .models import *
 from .utils import ObjectsMixin
+from .forms import ImagesForm, TextsForm, NewsForm
 # Create your views here.
 
 
@@ -34,6 +39,28 @@ class TextsView(ObjectsMixin, View):
 	template = 'main/texts.html'
 
 
+class IndexView(TemplateView):
+	template_name = 'main/index.html'
+
+
+class CreateImagesView(LoginRequiredMixin, CreateView):
+	template_name = 'main/create_images.html'
+	form_class = ImagesForm
+	success_url = reverse_lazy('main:images')
+
+
+class CreateTextsView(LoginRequiredMixin, CreateView):
+	template_name = 'main/create_texts.html'
+	form_class = TextsForm
+	success_url = reverse_lazy('main:texts')
+
+
+class CreateNewsView(LoginRequiredMixin, CreateView):
+	template_name = 'main/create_news.html'
+	form_class = NewsForm
+	success_url = reverse_lazy('main:news')	
+
+
 def other_page(request, page):
 	try:
 		template = get_template('main/' + page + '.html')
@@ -41,8 +68,4 @@ def other_page(request, page):
 		raise Http404
 	return HttpResponse(template.render(request=request))
 
-def lol(request):
-	return render(request, 'main/lol.html')
 
-def index(request):
-	return render(request, 'main/index.html')

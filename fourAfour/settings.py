@@ -131,7 +131,8 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
 
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = 'main:index'
+LOGOUT_REDIRECT_URL = 'main:index'
 
 SOCIAL_AUTH_VK_OAUTH2_KEY = '7183676'
 SOCIAL_AUTH_VK_OAUTH2_SECRET = '6u9H7knlkng7guTqfzli'

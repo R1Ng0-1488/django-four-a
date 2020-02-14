@@ -4,10 +4,17 @@
 
 {% block content %}
 <div class="container">
+	{% if user.is_authenticated %}
+	<div class="row">
+		<div class="col-sm-12 col-lg-3 div m-3">
+			<a class="text-white btn btn-danger m-3" type="submit" href="{% url 'main:add_images' %}">Добавить фотку</a>
+		</div>
+	</div>
+	{% endif %}	
 	<div class="row">
 		{% for image in images %}
 		<div class="col-sm-12 col-lg-5">
-			<img width="100%"  class="rounded m-5" src="{{ image.image }}">
+			<img width="100%"  class="rounded m-3" src="{{ image.image }}">
 		</div>
 		{% endfor %}
 	</div>

@@ -5,6 +5,13 @@
 
 {% block content %}
 <div class="container">
+	{% if user.is_authenticated %}
+	<div class="row">
+		<div class="col-sm-12 col-lg-3 div m-3">
+			<a class="btn btn-danger m-3" href="{% url 'main:create_news' %}">Добавить новость</a>
+		</div>
+	</div>
+	{% endif %}
 	<div class="row">
 		{% for new in news %}
 		<div class="col-xs-12 col-lg-8 m-3 div">
@@ -20,6 +27,9 @@
 					<h1 class="text-white border-danger">{{ new.title }} </h1>
 					<p class="text-white">{{ new.text }}</p>
 					<p class="text-white text-right font-italic">{{ new.author }}</p>
+					{% if new.source %}
+					<p class="text-right font-italic"><a class="text-danger" href="{{ new.source }}">Источник</a></p>
+					{% endif %}
 					<p class="text-white text-right font-italic">{{ new.published }}</p>
 				</div>
 			</div>

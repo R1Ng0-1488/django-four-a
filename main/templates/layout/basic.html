@@ -35,7 +35,7 @@
 						<a href="{% url 'main:musics' %}" class="nav-link">Музыка</a>
 					</li>
 					<li class="nav-item lol m-2">
-						<a href="{% url 'main:lol' %}" class="nav-link">Биография</a>
+						<a href="{% url 'main:other' page='lol' %}" class="nav-link">Биография</a>
 					</li>
 					<li class="nav-item lol m-2">
 						<a href="{% url 'main:other' page='contacts' %}" class="nav-link">Контакты</a>
@@ -46,9 +46,16 @@
 					<li class="nav-item lol m-2">
 						<a href="{% url 'main:texts' %}" class="nav-link">Текста</a>
 					</li>
-					<li class="nav-item m-2">
-						<a class="hovers" href="/login/vk-oauth2"><img class="hovers" width="40" height="40" src="{% static 'main/vk.png' %}"></a>
-					</li>
+					
+					{% if user.is_authenticated %}
+						<li class="nav-item m-2">
+							<a class="hovers" href="{% url 'logout' %}"><img class="hovers" width="40" height="40" src="{% static 'main/vk-white.png' %}"></a>
+						</li>
+					{% else %}
+						<li class="nav-item m-2">
+							<a class="hovers" href="/login/vk-oauth2"><img class="hovers" width="40" height="40" src="{% static 'main/vk.png' %}"></a>
+						</li>
+					{% endif %}
 				</ul>
 			</div>
 		</nav>
