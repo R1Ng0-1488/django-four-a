@@ -17,11 +17,12 @@ class TextsForm(forms.ModelForm):
 
 
 class NewsForm(forms.ModelForm):
-	image = forms.URLField(label='Ссылка на изображение', help_text='Можно добавлять что-то одно из \
-		видео или изображения, если добавишь и то и то будет видно только видео.')
-	source = forms.URLField(label='Источник', help_text='Не обязательно')
 	class Meta:
 		model = News
 		fields = ('title', 'text', 'video', 'image', 'source','author')
 		labels = {'title': 'Название', 'text': 'Содержание',
-				  'video': 'Ссылка на видео', 'author': 'Автор'}
+				  'video': 'Ссылка на видео', 'image': 'Ссылка на изображение',
+				  'source': 'Источник', 'author': 'Автор'}
+		help_texts = {'image': 'Можно добавлять что-то одно из видео или \
+							   изображения, если добавишь и то и то будет видно только видео.',
+					 'source': 'Не обязательно'}

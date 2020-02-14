@@ -17,6 +17,25 @@
 			<img width="100%"  class="rounded m-3" src="{{ image.image }}">
 		</div>
 		{% endfor %}
+		
+
+	</div>
+	<div class="row">
+		<div class="col">
+			<nav class="" aria-label="Page navigation example">
+  			<ul class="pagination">
+  				{% if page.has_previous %}
+    			<li class="page-item"><a class="page-link text-dark" href="?page={{ page.previous_page_number }}">Previous</a></li>
+    			{% endif %}
+    			{% for obj in page.paginator.page_range %}
+    			<li class="page-item"><a class="page-link text-dark" href="?page={{ obj }}">{{ obj }}</a></li>
+    			{% endfor %}
+    			{% if page.has_next %}
+    			<li class="page-item"><a class="page-link text-dark" href="?page={{ page.next_page_number }}">Next</a></li>
+    			{% endif %}
+  			</ul>
+			</nav>
+		</div>
 	</div>
 </div>
 {% endblock %}
