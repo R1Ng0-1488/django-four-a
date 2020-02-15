@@ -26,3 +26,14 @@ class NewsForm(forms.ModelForm):
 		help_texts = {'image': 'Можно добавлять что-то одно из видео или \
 							   изображения, если добавишь и то и то будет видно только видео.',
 					 'source': 'Не обязательно'}
+
+	def clean_video(self):
+		val = self.cleaned_data['video']
+		if '=' in val:
+			sp = val.split('=')
+			val = 'https://www.youtube.com/embed/' + sp[-1]
+			return val
+		else:
+			sp = val.split('/')
+			val = 'https://www.youtube.com/embed/' + sp[-1]
+			return val
