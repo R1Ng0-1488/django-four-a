@@ -27,10 +27,11 @@ class NewsForm(forms.ModelForm):
 							   изображения, если добавишь и то и то будет видно только видео.',
 					 'source': 'Не обязательно'}
 
-		def clean_video(self):
-			val = self.cleaned_data['video']
-			if '=' in val:
-				sp = val.split('=')
-				val = 'https://www.youtube.com/embed/' + sp[-1]
-				return val
-			return val	 
+	def clean_video(self):
+		val = self.cleaned_data['video']
+		if '=' in val:
+			sp = val.split('=')
+			val = 'https://www.youtube.com/embed/' + sp[-1]
+			return val
+		return val	 
+		
