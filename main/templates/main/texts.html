@@ -18,7 +18,9 @@
 			<h1 class="text-white">{{ text.title }}</h1>
 			<p class="text-white">{{ text.text }}</p>
 			<p class="text-white">{{ text.published }}</p>
+			{% if user.is_authenticated %}
 			<a class="btn btn-danger my-3" href="{% url 'main:detail_texts' pk=text.pk %}">Подробнее</a>
+			{% endif %}
 		</div>
 		{% endfor %}
 	</div>
