@@ -1,0 +1,53 @@
+{% extends "layout/basic.html" %}
+
+{% load bootstrap4 %}
+
+{% block title %}{{ news.title }}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-lg-8 m-3 div">
+            <div class="row">
+                <div class="col-xs-12 col-md-6 col-lg-6 my-5">
+                    {% if news.video %}
+    					<iframe width="100%" class="rounded"  src="{{ news.video }}" frameborder="0" allowfullscreen></iframe>
+    				{% else %}
+    					<img width="100%" class="rounded"  src="{{ news.image }}">
+    				{% endif %}
+                </div>
+                <div class="col-xs-12 col-md-6 col-lg-6">
+                    <h1 class="text-white border-danger">{{ news.title }} </h1>
+					<p class="text-white">{{ news.text }}</p>
+					<p class="text-white text-right font-italic">{{ news.author }}</p>
+					{% if news.source %}
+					<p class="text-right font-italic"><a class="text-danger" href="{{ news.source }}">Источник</a></p>
+					{% endif %}
+					<p class="text-white text-right font-italic">{{ news.published }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-lg-8 m-3 div">
+            <h3 class="text-white">Добавить комментарий</h3>
+            <form class="" method="post">
+                {% csrf_token %}
+                {% bootstrap_form form layout='horizontal' %}
+                <button class="btn btn-danger m-3" type="submit" name="button">Добавить</button>
+            </form>
+        </div>
+    </div>
+    {% if comments %}
+    <div class="row">
+        {% for comment in comments  %}
+        <div class="col-xs-12 col-lg-8 m-3 div">
+            <h3 class="text-white">{{ comment.author }}</h3>
+            <p class="text-white">{{ comment.content }}</p>
+            <p class="text-white">{{ comment.published }}</p>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

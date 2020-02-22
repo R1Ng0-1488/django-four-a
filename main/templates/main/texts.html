@@ -4,7 +4,7 @@
 
 {% block content %}
 <div class="container">
-	
+
 	{% if user.is_authenticated %}
 	<div class="row">
 		<div class="col-sm-12 col-lg-3 div m-3">
@@ -12,12 +12,13 @@
 		</div>
 	</div>
 	{% endif %}
-	<div class="row">	
+	<div class="row">
 		{% for text in texts %}
 		<div class="col div m-3">
 			<h1 class="text-white">{{ text.title }}</h1>
 			<p class="text-white">{{ text.text }}</p>
 			<p class="text-white">{{ text.published }}</p>
+			<a class="btn btn-danger my-3" href="{% url 'main:detail_texts' pk=text.pk %}">Подробнее</a>
 		</div>
 		{% endfor %}
 	</div>

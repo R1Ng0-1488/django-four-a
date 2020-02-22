@@ -1,0 +1,37 @@
+{% extends "layout/basic.html" %}
+
+{% load bootstrap4 %}
+
+{% block title %}{{ images.title }}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-lg-5 div m-3">
+            <h1 class="text-white">{{ images.title }}</h1>
+            <img width="100%" class="rounded my-3" src="{{ images.image }}" alt="">
+            <p class="text-white">{{ images.published }}</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-lg-5 div m-3">
+            <h3 class="text-white">Добавить комментарий</h3>
+            <form class="" method="post">
+                {% csrf_token %}
+                {% bootstrap_form form layout='horizontal' %}
+                <button class="btn btn-danger my-3" type="submit" name="button">Добавить</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="row">
+        {% for comment in comments %}
+        <div class="col-sm-12 col-lg-12 div m-3">
+            <h3 class="text-whit">{{ comment.author }}</h3>
+            <p class="text-white">{{ comment.content }}</p>
+            <p class="text-white">{{ comment.published }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

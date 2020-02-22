@@ -16,7 +16,7 @@
 	<div class="row">
 		{% for new in news %}
 		<div class="col-xs-12 col-lg-8 m-3 div">
-			<div class="row">	
+			<div class="row">
 				<div class="col-xs-12 col-md-6 col-lg-6 my-5">
 				{% if new.video %}
 					<iframe width="100%" class="rounded"  src="{{ new.video }}" frameborder="0" allowfullscreen></iframe>
@@ -32,12 +32,15 @@
 					<p class="text-right font-italic"><a class="text-danger" href="{{ new.source }}">Источник</a></p>
 					{% endif %}
 					<p class="text-white text-right font-italic">{{ new.published }}</p>
+					{% if user.is_authenticated %}
+					<p class="text-right"><a class="btn btn-danger" href="{% url 'main:detail_news' pk=new.pk %}">Подробнее</a></p>
+					{% endif %}
 				</div>
 			</div>
 		</div>
-		<div class="col-xs-12 col-lg-4 ">	
+		<div class="col-xs-12 col-lg-4 ">
 		</div>
-		{% endfor %}	
+		{% endfor %}
 	</div>
 	<div class="row">
 		<div class="col">

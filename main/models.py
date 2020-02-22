@@ -13,9 +13,10 @@ class News(models.Model):
 	# 						  verbose_name='Изображение')
 	image = models.URLField(blank=True, null=True, verbose_name='Изображение')
 	source = models.URLField(blank=True, null=True, verbose_name='Источник')
+	# author = models.CharField(max_length=200, verbose_name='Автор')
 	author = models.CharField(max_length=200, verbose_name='Автор')
 	published = models.DateTimeField(auto_now_add=True,
-									 verbose_name='Опубликовано')	
+									 verbose_name='Опубликовано')
 
 
 	class Meta:
@@ -44,7 +45,7 @@ class Videos(models.Model):
 
 
 class Rubrics(models.Model):
-	name = models.CharField(max_length=200, 
+	name = models.CharField(max_length=200,
 							verbose_name='Название')
 
 	class Meta:
@@ -62,7 +63,7 @@ class Musics(models.Model):
 	# image = models.ImageField(blank=True, upload_to='media', verbose_name='Изображение')
 	image = models.URLField(blank=True, verbose_name='Изображение', null=True)
 	published = models.DateTimeField(auto_now_add=True, verbose_name='Опубликовано')
-	album = models.ForeignKey('Albums', verbose_name='Альбом', 
+	album = models.ForeignKey('Albums', verbose_name='Альбом',
 							  on_delete=models.CASCADE)
 
 	class Meta:
@@ -85,13 +86,13 @@ class Albums(models.Model):
 		verbose_name = 'Альбом'
 		verbose_name_plural = 'Альбомы'
 		ordering = ['-published']
-			
+
 	def __str__(self):
 		return self.title
 
 
 class Images(models.Model):
-	title = models.CharField(max_length=200, verbose_name='Название', 
+	title = models.CharField(max_length=200, verbose_name='Название',
 							 blank=True)
 	# image = models.ImageField(upload_to='media', verbose_name='Изображение')
 	image = models.URLField(verbose_name='Изображение')
@@ -103,7 +104,7 @@ class Images(models.Model):
 		ordering = ['-published']
 
 	def __str__(self):
-		return self.title	
+		return self.title
 
 
 class Texts(models.Model):
@@ -119,4 +120,15 @@ class Texts(models.Model):
 	def __str__(self):
 		return self.title
 
+class Comments(models.Model):
+	news = models.ForeignKey(News, null=True, blank=True, on_delete=models.CASCADE, verbose_name='Новости')
+	texts = models.ForeignKey(Texts, null=True, blank=True, on_delete=models.CASCADE, verbose_name='Текста')
+	images = models.ForeignKey(Images, null=True, blank=True, on_delete=models.CASCADE, verbose_name='Фотки')
+	author = models.CharField(max_length=200, verbose_name='Автор')
+	content = models.TextField(verbose_name='Содержание')
+	published = models.DateTimeField(auto_now_add=True, verbose_name='Опубликовано')
 
+	class Meta:
+		verbose_name = 'Комментарий'
+		verbose_name_plural = 'Коментарии'
+		ordering = ['-published']

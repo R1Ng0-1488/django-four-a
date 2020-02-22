@@ -10,11 +10,11 @@
 			<a class="text-white btn btn-danger m-3" type="submit" href="{% url 'main:add_images' %}">Добавить фотку</a>
 		</div>
 	</div>
-	{% endif %}	
+	{% endif %}
 	<div class="row">
 		{% for image in images %}
-		<div class="col-sm-12 col-lg-5">
-			<img width="100%"  class="rounded m-3" src="{{ image.image }}">
+		<div class="col-sm-12 col-lg-5 div m-3">
+			<a href="{% url 'main:detail_images' pk=image.pk %}"><img width="100%"  class="rounded my-3" src="{{ image.image }}"></a>
 		</div>
 		{% endfor %}
 	</div>
